@@ -9,12 +9,6 @@
   src: url("../assets//fonts/NeueMontreal-Regular.otf") format("otf");
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 :root {
   --font-neue-montreal: "Neue Montreal", sans-serif;
   --font-inter-tight: "Inter Tight", sans-serif;
@@ -22,6 +16,9 @@
 }
 
 @theme {
+  --breakpoint-xs: 480px;
+  --breakpoint-xxs: 375px;
+
   /* Colors */
   /* Base reset */
   --color-*: initial;
@@ -41,13 +38,14 @@
   --color-strong-950: #071210;
   --color-surface-800: #4D5761;
   --color-sub-300: #D2D6DB;
-  --color-soft-200: #E5E7EB;
   --color-weak-50: #F3F4F6;
 
   /* Text */
   --color-sub-600: #6C737F;
   --color-soft-400: #9DA4AE;
   --color-disable-300: #D2D6DB;
+
+  --color-soft-100: #E5E7EB;
 
   /* Icon */
   --color-icon-strong: #071210;
@@ -197,6 +195,10 @@
 }
 
 @layer base {
+  body {
+    font-family: var(--font-inter-tight);
+    font-weight: 400;
+  }
 
   h1,
   h2,
