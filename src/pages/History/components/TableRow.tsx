@@ -15,7 +15,11 @@ const TableRow = ({ history }: TableRowProps) => (
     <td data-cell='Task Name'>
       <div className='flex h-full items-center gap-3 text-sm text-strong-950'>
         <div className='relative hidden size-5 min-w-5 md:block'>
+          <label htmlFor='checkbox-id' className='sr-only'>
+            row
+          </label>
           <input
+            id='checkbox-id'
             type='checkbox'
             className={`peer size-full appearance-none rounded-md border-2 border-soft-100 bg-white transition-colors duration-200 outline-none checked:border-primary-base`}
           />

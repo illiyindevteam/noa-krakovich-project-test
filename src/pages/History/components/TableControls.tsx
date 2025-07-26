@@ -23,6 +23,7 @@ const TableControls = ({ onSearch, onSort }: TableControlsProps) => (
           { name: 'Label', action: () => onSort('label') },
           { name: 'Status', action: () => onSort('status') },
         ]}
+        classNameMenu='left-0 sm:right-0 sm:left-auto'
       />
       <Dropdown
         name='Filter'
@@ -37,6 +38,7 @@ const TableControls = ({ onSearch, onSort }: TableControlsProps) => (
           { name: 'Approved', action: () => onSearch('Approved') },
           { name: 'To Do', action: () => onSearch('To Do') },
         ]}
+        classNameMenu='left-0 sm:right-0 sm:left-auto'
       />
     </div>
   </div>

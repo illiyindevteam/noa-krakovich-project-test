@@ -7,7 +7,7 @@ import UserMenu from '../ui/UserMenu'
 
 const Header = ({ onShowSidebar }: { onShowSidebar: (value: boolean) => void }) => {
   return (
-    <div className='flex w-full items-center justify-between border-b border-[#E4E4E4] px-8 py-6'>
+    <div className='flex w-full items-center justify-between border-b border-[#E4E4E4] px-4 py-6 md:px-8'>
       <div className='flex flex-grow gap-3'>
         <button
           className='cursor-pointer p-[6px] text-soft-400 transition-colors hover:text-strong-950 xl:hidden'
@@ -18,7 +18,7 @@ const Header = ({ onShowSidebar }: { onShowSidebar: (value: boolean) => void }) 
         </button>
         <InputSearch className='hidden w-full max-w-[400px] md:flex' showShortcut enableShortcut />
       </div>
-      <div className='flex h-fit gap-4'>
+      <div className='flex h-fit gap-3 md:gap-4'>
         <button className='cursor-pointer p-[6px] text-soft-400' aria-label='Setting'>
           <SettingIcon width={20} height={20} />
         </button>

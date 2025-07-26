@@ -24,7 +24,7 @@
   }
 
   td:not(:first-child):not(:last-child){
-    @apply max-md:flex max-md:flex-col gap-1 max-sm:grid max-sm:grid-cols-[98px_1fr]
+    @apply max-md:flex max-md:flex-col sm:gap-1 max-sm:grid max-sm:grid-cols-[98px_1fr]
   }
 
   td:not(:last-child)::before {

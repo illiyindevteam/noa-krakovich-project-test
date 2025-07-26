@@ -93,11 +93,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {visiblePages.map((page: PageItem, index: number) => {
           if (!isPageNumber(page)) {
             return (
-              <span
-                key={`ellipsis-${index}`}
-                className='relative flex size-8 items-center justify-center rounded-lg'
-                aria-hidden='true'
-              >
+              <span key={`ellipsis-${index}`} className='relative flex size-8 items-center justify-center rounded-lg'>
                 ...
               </span>
             )

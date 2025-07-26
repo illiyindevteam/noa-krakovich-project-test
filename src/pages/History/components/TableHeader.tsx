@@ -18,7 +18,7 @@ const TableHeader = ({ label, sortable = true, onSort, className, ...props }: Ta
         onClick={onSort}
       >
         {label}
-        <CaretDoubleVertical width={12} height={12} aria-hidden='true' />
+        <CaretDoubleVertical width={12} height={12} />
       </button>
     ) : (
       <span className='text-xs font-medium md:text-sm md:font-normal'>{label}</span>

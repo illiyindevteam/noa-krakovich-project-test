@@ -40,7 +40,6 @@ const DashboardLayout = ({ children, activeMenu }: DashboardLayoutProps) => {
           'translate-x-0': showSidebar,
           '-translate-x-[120%] xl:translate-x-0': !showSidebar,
         })}
-        aria-hidden={!showSidebar}
       >
         <Sidebar activeMenu={activeMenu} />
         <button

@@ -18,6 +18,7 @@ const CardSummaryProgress = ({ label, task, percentage = 0, icon }: ProgressSumm
           variant='neutral-stroke'
           size='xs'
           className='h-fit w-fit'
+          aria-label='Download'
         />
       </div>
       <div className='w-full'>

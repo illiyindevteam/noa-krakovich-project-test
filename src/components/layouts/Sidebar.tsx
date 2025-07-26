@@ -33,9 +33,9 @@ const OTHER_MENU_ITEMS: MenuItemProps[] = [
 const MenuButton = ({ item, isActive, onClick }: { item: MenuItemProps; isActive?: boolean; onClick?: () => void }) => (
   <button
     className={cn(
-      'flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-start text-sub-600 hover:text-strong-950',
+      'flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-start text-[#373e44] hover:text-primary-dark',
       {
-        'border-2 border-white text-strong-950 outline-1 outline-[#5E57E480]': isActive,
+        'border-2 border-white text-primary-dark outline-1 outline-[#5E57E480]': isActive,
       },
     )}
     onClick={onClick}

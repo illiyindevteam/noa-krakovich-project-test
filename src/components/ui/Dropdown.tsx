@@ -10,9 +10,10 @@ interface DropdownProps {
     action: () => void
   }[]
   isAutoClose?: boolean
+  classNameMenu?: string
 }
 
-const Dropdown = ({ name, menu, isAutoClose = true }: DropdownProps) => {
+const Dropdown = ({ name, menu, isAutoClose = true, classNameMenu }: DropdownProps) => {
   const [showMenu, setShowMenu] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -53,12 +54,13 @@ const Dropdown = ({ name, menu, isAutoClose = true }: DropdownProps) => {
               'invisible opacity-0': !showMenu,
               'visible opacity-100': showMenu,
             },
+            classNameMenu,
           )}
         >
           {menu.map((item, index) => (
             <button
               key={index}
-              className='w-full px-2 py-1 text-left text-xxs whitespace-nowrap text-surface-800 hover:text-strong-950 md:text-xs'
+              className='w-full px-2 py-1 text-left text-xs whitespace-nowrap text-surface-800 hover:text-strong-950'
               onClick={() => {
                 item.action()
                 if (isAutoClose) {

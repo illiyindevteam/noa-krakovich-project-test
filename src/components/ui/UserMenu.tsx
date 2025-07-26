@@ -40,7 +40,7 @@ const UserMenu = () => {
       </button>
       <div
         className={cn(
-          'absolute right-0 -bottom-3 flex w-[160px] translate-y-full flex-col rounded-xl border border-soft-100 bg-white p-1 transition-all duration-300 md:rounded-2xl',
+          'absolute right-0 -bottom-3 flex w-[100px] translate-y-full flex-col rounded-xl border border-soft-100 bg-white p-1 transition-all duration-300 md:rounded-2xl',
           {
             'invisible opacity-0': !showMenu,
             'visible opacity-100': showMenu,

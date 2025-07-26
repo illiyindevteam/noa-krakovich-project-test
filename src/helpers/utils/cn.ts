@@ -9,7 +9,7 @@ const customTwMerge = createTailwindMerge(() => {
     ...config,
     classGroups: {
       ...config.classGroups,
-      'font-size': ['text-xxs'],
+      'font-size': ['text-xxs', 'text-xs', 'text-sm', 'text-md', 'text-lg', 'text-xl'],
     },
   }
 })
