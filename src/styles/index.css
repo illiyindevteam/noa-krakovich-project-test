@@ -16,8 +16,9 @@
 }
 
 @theme {
-  --breakpoint-xs: 480px;
   --breakpoint-xxs: 375px;
+  --breakpoint-xs: 480px;
+  --breakpoint-2md: 920px;
 
   /* Colors */
   /* Base reset */
@@ -43,20 +44,7 @@
   /* Text */
   --color-sub-600: #6C737F;
   --color-soft-400: #9DA4AE;
-  --color-disable-300: #D2D6DB;
-
   --color-soft-100: #E5E7EB;
-
-  /* Icon */
-  --color-icon-strong: #071210;
-  --color-icon-sub: #9DA4AE;
-  --color-icon-soft: #D2D6DB;
-  --color-icon-disabled: #E5E7EB;
-
-  /* Faded */
-  --color-faded-dark: #4D5761;
-  --color-faded-base: #9DA4AE;
-  --color-faded-light: #4D5761;
   --color-faded-lighter: #FCFCFD;
 
   /* Information */
@@ -192,6 +180,17 @@
   --text-xxs: 10px;
   --text-xxs--line-height: 18px;
   --text-xxs--letter-spacing: 0.04em;
+
+  --animate-grow-bar: grow 1s linear;
+
+  @keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 }
 
 @layer base {
