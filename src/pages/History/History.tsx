@@ -79,7 +79,7 @@ const History = () => {
   const totalPages = Math.ceil(allData.length / ITEMS_PER_PAGE)
 
   return (
-    <DashboardLayout>
+    <DashboardLayout activeMenu='/history'>
       <div className='w-full px-8'>
         <h1 className='mb-1 text-h4-mobile text-strong-950 md:text-h4'>Project History</h1>
         <p className='text-md text-surface-800 md:text-lg'>Manage and track project milestones</p>
@@ -88,7 +88,7 @@ const History = () => {
       <div className='mb-6 flex flex-col gap-4 px-4 md:mb-8 md:gap-6 md:px-8'>
         <TableControls onSearch={handleSearch} />
         <div className='w-full overflow-hidden rounded-xl border border-soft-100 bg-white'>
-          <div className='max-w-full overflow-x-scroll'>
+          <div className='max-w-full md:overflow-x-scroll'>
             <table className='w-full border-collapse overflow-hidden rounded-xl border border-white'>
               <thead className='max-md:hidden'>
                 <tr>
@@ -111,7 +111,7 @@ const History = () => {
                   <TableHeader
                     label='Status'
                     onSort={() => handleSort('status')}
-                    className='md:w-[128px] md:min-w-[128px]'
+                    className='md:w-[169px] md:min-w-[169px]'
                   />
                   <TableHeader label='' sortable={false} />
                 </tr>

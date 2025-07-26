@@ -6,9 +6,10 @@ import ChevronLeft from '@/assets/icon/chevron-left.svg?react'
 
 interface DashboardLayoutProps {
   children: React.ReactNode
+  activeMenu: string
 }
 
-const DashboardLayout = ({ children }: DashboardLayoutProps) => {
+const DashboardLayout = ({ children, activeMenu }: DashboardLayoutProps) => {
   const sidebarRef = useRef<HTMLDivElement>(null)
   const [showSidebar, setShowSidebar] = useState(false)
 
@@ -41,7 +42,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         })}
         aria-hidden={!showSidebar}
       >
-        <Sidebar />
+        <Sidebar activeMenu={activeMenu} />
         <button
           className='absolute top-2 right-0 z-10 flex h-7 w-7 translate-1/2 items-center justify-center rounded-lg border border-soft-400 bg-white text-soft-400 transition-all hover:text-strong-950 xl:hidden'
           onClick={() => setShowSidebar(false)}
@@ -57,7 +58,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       ></div>
 
       {/* Main Content */}
-      <div className='mx-auto h-fit min-h-dvh w-full max-w-[1536px] p-2'>
+      <div className='mx-auto h-fit min-h-dvh w-full max-w-[2560px] p-2'>
         <div className='flex w-full flex-grow flex-col gap-8 rounded-2xl border border-soft-100 bg-white'>
           <Header onShowSidebar={handleShowSidebar} />
           {children}

@@ -9,7 +9,7 @@ const Dashboard = () => {
   const { summary, projectOverview, upcomingMeeting, progressSummaries } = dashboardData
 
   return (
-    <DashboardLayout>
+    <DashboardLayout activeMenu='/dashboard'>
       <div className='w-full px-8'>
         <h1 className='mb-1 text-h4-mobile text-strong-950 md:text-h4'>Good morning, Prada</h1>
         <p className='text-md text-surface-800 md:text-lg'>Welcome to your dashboard.</p>

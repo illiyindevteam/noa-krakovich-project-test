@@ -8,6 +8,8 @@ import NotificationIcon from '@/assets/icon/notification-bing.svg?react'
 import CalendarIcon from '@/assets/icon/calendar-days.svg?react'
 import HeadphoneIcon from '@/assets/icon/headphone.svg?react'
 import LikeIcon from '@/assets/icon/like.svg?react'
+import { cn } from '@/helpers/utils/cn'
+import { useNavigate } from 'react-router-dom'
 
 type MenuItemProps = {
   name: string
@@ -28,14 +30,23 @@ const OTHER_MENU_ITEMS: MenuItemProps[] = [
   { name: 'Help Center', icon: <LikeIcon width={20} height={20} />, path: '#' },
 ]
 
-const MenuButton = ({ item }: { item: MenuItemProps }) => (
-  <button className='hover:bg-weak-100 flex w-full items-center gap-3 rounded-lg px-3 py-2 text-start text-sub-600'>
-    {item.icon}
-    <span className='text-sm text-surface-800'>{item.name}</span>
+const MenuButton = ({ item, isActive, onClick }: { item: MenuItemProps; isActive?: boolean; onClick?: () => void }) => (
+  <button
+    className={cn(
+      'flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-start text-sub-600 hover:text-strong-950',
+      {
+        'border-2 border-white text-strong-950 outline-1 outline-[#5E57E480]': isActive,
+      },
+    )}
+    onClick={onClick}
+  >
+    <div className={cn({ 'text-primary-base': isActive })}>{item.icon}</div>
+    <span className='text-sm'>{item.name}</span>
   </button>
 )
 
-const Sidebar = () => {
+const Sidebar = ({ activeMenu }: { activeMenu: string }) => {
+  const navigate = useNavigate()
   return (
     <aside className='flex h-dvh w-full flex-col gap-5 bg-weak-50'>
       <div className='border-b border-soft-100 p-5'>
@@ -52,13 +63,23 @@ const Sidebar = () => {
       </div>
       <nav className='flex flex-col gap-2 px-2'>
         {MAIN_MENU_ITEMS.map((item) => (
-          <MenuButton key={item.name} item={item} />
+          <MenuButton
+            key={item.name}
+            item={item}
+            isActive={item.path === activeMenu}
+            onClick={() => navigate(item.path)}
+          />
         ))}
       </nav>
       <hr className='border-t border-soft-100' />
       <nav className='flex flex-col gap-2 px-2'>
         {OTHER_MENU_ITEMS.map((item) => (
-          <MenuButton key={item.name} item={item} />
+          <MenuButton
+            key={item.name}
+            item={item}
+            isActive={item.path === activeMenu}
+            onClick={() => navigate(item.path)}
+          />
         ))}
       </nav>
     </aside>
