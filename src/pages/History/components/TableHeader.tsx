@@ -1,14 +1,15 @@
 import CaretDoubleVertical from '@/assets/icon/caret-double-vertical.svg?react'
+import { cn } from '@/helpers/utils/cn'
 import { memo } from 'react'
 
-interface TableHeaderProps {
+interface TableHeaderProps extends React.HTMLAttributes<HTMLTableCellElement> {
   label: string
   sortable?: boolean
   onSort?: () => void
 }
 
-const TableHeader = ({ label, sortable = true, onSort }: TableHeaderProps) => (
-  <th className='border border-weak-50 bg-weak-50 p-3 text-left text-sub-600'>
+const TableHeader = ({ label, sortable = true, onSort, className, ...props }: TableHeaderProps) => (
+  <th className={cn('border border-weak-50 bg-weak-50 p-3 text-left text-sub-600', className)} {...props}>
     {sortable ? (
       <button
         type='button'

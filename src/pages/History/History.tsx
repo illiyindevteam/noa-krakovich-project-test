@@ -92,11 +92,27 @@ const History = () => {
             <table className='w-full border-collapse overflow-hidden rounded-xl border border-white'>
               <thead className='max-md:hidden'>
                 <tr>
-                  <TableHeader label='Task Name' onSort={() => handleSort('name')} />
-                  <TableHeader label='Due Date' onSort={() => handleSort('dueDate')} />
-                  <TableHeader label='Member' sortable={false} />
-                  <TableHeader label='Label' onSort={() => handleSort('label')} />
-                  <TableHeader label='Status' onSort={() => handleSort('status')} />
+                  <TableHeader
+                    label='Task Name'
+                    onSort={() => handleSort('name')}
+                    className='md:min-w-[280px] xl:min-w-[300px]'
+                  />
+                  <TableHeader
+                    label='Due Date'
+                    onSort={() => handleSort('dueDate')}
+                    className='md:min-w-[100px] xl:min-w-[160px]'
+                  />
+                  <TableHeader label='Member' sortable={false} className='md:w-[128px] md:min-w-[128px]' />
+                  <TableHeader
+                    label='Label'
+                    onSort={() => handleSort('label')}
+                    className='md:w-[128px] md:min-w-[128px]'
+                  />
+                  <TableHeader
+                    label='Status'
+                    onSort={() => handleSort('status')}
+                    className='md:w-[128px] md:min-w-[128px]'
+                  />
                   <TableHeader label='' sortable={false} />
                 </tr>
               </thead>
