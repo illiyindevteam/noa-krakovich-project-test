@@ -1,19 +1,24 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Command from '@/assets/icon/command.svg?react'
 import SearchSm from '@/assets/icon/search.svg?react'
 import { cn } from '@/helpers/utils/cn'
 
-type InputSearchProps = React.InputHTMLAttributes<HTMLInputElement>
+type InputSearchProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  showShortcut?: boolean
+  enableShortcut?: boolean
+}
 
-const InputSearch = ({ className, ...props }: InputSearchProps) => {
+const InputSearch = ({ className, showShortcut, enableShortcut, ...props }: InputSearchProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isFocused, setIsFocused] = useState(false)
 
-  useEffect(() => {
+  // Only set up the keyboard shortcut if enabled
+  React.useEffect(() => {
+    if (!enableShortcut) return
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      // For Mac (⌘F) or Windows/Linux (Ctrl+F)
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'f') {
         e.preventDefault()
         inputRef.current?.focus()
@@ -21,10 +26,8 @@ const InputSearch = ({ className, ...props }: InputSearchProps) => {
     }
 
     window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [enableShortcut])
 
   return (
     <div className={cn('relative h-10 w-full', className)}>
@@ -37,7 +40,7 @@ const InputSearch = ({ className, ...props }: InputSearchProps) => {
         onBlur={() => setIsFocused(false)}
         {...props}
       />
-      {!isFocused && (
+      {!isFocused && showShortcut && enableShortcut && (
         <div className='absolute top-1/2 right-3 z-10 flex -translate-y-1/2 gap-2'>
           <div className='flex h-6 w-6 items-center justify-center rounded bg-[#9da4ae10] text-[#727272]'>
             <Command width={12} height={12} />

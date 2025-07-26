@@ -15,7 +15,7 @@ const MemberGroup = ({ members, className }: MemberGroupProps) => {
           alt={member.name}
           width={32}
           height={32}
-          className='inline-block aspect-square h-full rounded-full ring-2 ring-white'
+          className='inline-block aspect-square! h-full rounded-full ring-2 ring-white'
           loading='lazy'
         />
       ))}

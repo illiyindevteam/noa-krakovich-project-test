@@ -1,0 +1,20 @@
+@reference './index.css';
+
+@layer base {
+  td{
+    @apply px-3 max-md:py-1 max-md:grid max-md:grid-cols-[98px_1fr] md:h-[54px] md:border md:border-soft-100 text-sm text-strong-950 
+  }
+  td:before{
+    @apply max-md:content-[attr(data-cell)_":_"] font-medium
+  }
+  td:first-child{
+    @apply max-md:pt-4
+  }
+  td:last-child{
+    @apply max-md:pb-4
+  }
+  tr:nth-of-type(2n) {
+    @apply bg-[#F8F8F8] md:bg-white
+    
+  }
+}

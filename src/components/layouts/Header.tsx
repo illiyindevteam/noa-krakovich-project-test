@@ -16,7 +16,7 @@ const Header = ({ onShowSidebar }: { onShowSidebar: (value: boolean) => void }) 
         >
           <TextAlignLeft width={20} height={20} />
         </button>
-        <InputSearch className='hidden w-full max-w-[400px] md:flex' />
+        <InputSearch className='hidden w-full max-w-[400px] md:flex' showShortcut enableShortcut />
       </div>
       <div className='flex h-fit gap-4'>
         <button className='cursor-pointer p-[6px] text-soft-400' aria-label='Setting'>
