@@ -1,9 +1,9 @@
 import { memo } from 'react'
 import InputSearch from '../ui/InputSearch'
 import SettingIcon from '@/assets/icon/setting-2.svg?react'
-import ChevronDown from '@/assets/icon/chevron-down.svg?react'
-import avatarImage from '@/assets/images/avatar/user-profile.webp'
+
 import TextAlignLeft from '@/assets/icon/textalign-left.svg?react'
+import UserMenu from '../ui/UserMenu'
 
 const Header = ({ onShowSidebar }: { onShowSidebar: (value: boolean) => void }) => {
   return (
@@ -23,13 +23,7 @@ const Header = ({ onShowSidebar }: { onShowSidebar: (value: boolean) => void }) 
           <SettingIcon width={20} height={20} />
         </button>
         <div className='h-8 border-l border-soft-400' />
-        <div className='flex items-center gap-3'>
-          <img src={avatarImage} alt='Avatar' width={32} height={32} className='h-8 w-8 rounded-full' />
-          <p className='text-md whitespace-nowrap text-strong-950'>Brian F.</p>
-          <div>
-            <ChevronDown width={20} height={20} />
-          </div>
-        </div>
+        <UserMenu />
       </div>
     </div>
   )

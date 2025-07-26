@@ -1,14 +1,13 @@
-import Button from '@/components/ui/Button'
+import Dropdown from '@/components/ui/Dropdown'
 import InputSearch from '@/components/ui/InputSearch'
 import { memo } from 'react'
-import ChevronDown from '@/assets/icon/chevron-down.svg?react'
 
 interface TableControlsProps {
   onSearch: (query: string) => void
-  onSort?: (sortKey: string) => void
+  onSort: (key: 'name' | 'dueDate' | 'label' | 'status' | '') => void
 }
 
-const TableControls = ({ onSearch }: TableControlsProps) => (
+const TableControls = ({ onSearch, onSort }: TableControlsProps) => (
   <div className='flex flex-col justify-between gap-4 sm:flex-row'>
     <InputSearch
       placeholder='Search for your past projects'
@@ -16,13 +15,29 @@ const TableControls = ({ onSearch }: TableControlsProps) => (
       onChange={(e) => onSearch(e.target.value)}
     />
     <div className='flex gap-4'>
-      <Button
-        variant='neutral-stroke'
-        size='xs'
-        text='Sort By'
-        rightIcon={<ChevronDown width='100%' height='100%' />}
+      <Dropdown
+        name='Sort by'
+        menu={[
+          { name: 'Name', action: () => onSort('name') },
+          { name: 'Due Date', action: () => onSort('dueDate') },
+          { name: 'Label', action: () => onSort('label') },
+          { name: 'Status', action: () => onSort('status') },
+        ]}
       />
-      <Button variant='neutral-stroke' size='xs' text='Filter' rightIcon={<ChevronDown width='100%' height='100%' />} />
+      <Dropdown
+        name='Filter'
+        menu={[
+          { name: 'All', action: () => onSearch('') },
+          { name: 'UI Design', action: () => onSearch('UI Design') },
+          { name: 'UX Design', action: () => onSearch('UX Design') },
+          { name: 'Illustration', action: () => onSearch('Illustration') },
+          { name: 'Motion Graphics', action: () => onSearch('Motion Graphics') },
+          { name: 'Waiting Feedback', action: () => onSearch('Waiting Feedback') },
+          { name: 'In Progress', action: () => onSearch('In Progress') },
+          { name: 'Approved', action: () => onSearch('Approved') },
+          { name: 'To Do', action: () => onSearch('To Do') },
+        ]}
+      />
     </div>
   </div>
 )

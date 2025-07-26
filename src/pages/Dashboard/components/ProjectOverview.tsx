@@ -12,7 +12,7 @@ const ProjectOverview = ({ data }: { data: ProjectOverviewType }) => {
         display: false,
       },
       tooltip: {
-        backgroundColor: '2F185E',
+        backgroundColor: '#2F185E',
         displayColors: false,
         borderWidth: 1,
         title: {
@@ -59,7 +59,7 @@ const ProjectOverview = ({ data }: { data: ProjectOverviewType }) => {
         <p className='text-sm text-surface-800 md:text-md'>Check your schedule below</p>
       </div>
       <div className='flex w-full flex-col items-center gap-6 min-[580px]:flex-row md:flex-col'>
-        <div className='relative size-[240px] xxs:size-[300px] 2md:size-[380px] sm:size-[320px] lg:size-[438px]'>
+        <div className='relative size-[240px] xxs:size-[300px] sm:size-[320px] 2md:size-[380px] lg:size-[438px]'>
           <Doughnut
             data={dataChart}
             options={options}

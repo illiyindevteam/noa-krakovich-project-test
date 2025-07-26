@@ -8,6 +8,7 @@ import TableControls from './components/TableControls'
 import TableHeader from './components/TableHeader'
 import TableRow from './components/TableRow'
 import Pagination from '@/components/ui/Pagination'
+import TableEmpty from './components/TableEmpty'
 
 type SortDirection = 'asc' | 'desc'
 type SortKey = 'name' | 'dueDate' | 'label' | 'status' | ''
@@ -24,7 +25,16 @@ const History = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const handleSearch = (query: string) => {
-    const filtered = historyData.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))
+    const lowerCaseQuery = query.toLowerCase().trim()
+
+    const filtered = historyData.filter((item) => {
+      const nameMatch = item.name?.toLowerCase().includes(lowerCaseQuery) || false
+      const labelMatch = item.label.text?.toLowerCase().includes(lowerCaseQuery) || false
+      const statusMatch = item.status.text?.toLowerCase().includes(lowerCaseQuery) || false
+
+      return nameMatch || labelMatch || statusMatch
+    })
+
     setAllData(filtered)
     setCurrentPage(1)
     updateDisplayData(filtered, 1)
@@ -86,50 +96,59 @@ const History = () => {
       </div>
 
       <div className='mb-6 flex flex-col gap-4 px-4 md:mb-8 md:gap-6 md:px-8'>
-        <TableControls onSearch={handleSearch} />
-        <div className='w-full overflow-hidden rounded-xl border border-soft-100 bg-white'>
-          <div className='max-w-full md:overflow-x-scroll'>
-            <table className='w-full border-collapse overflow-hidden rounded-xl border border-white'>
-              <thead className='max-md:hidden'>
-                <tr>
-                  <TableHeader
-                    label='Task Name'
-                    onSort={() => handleSort('name')}
-                    className='md:min-w-[280px] xl:min-w-[300px]'
-                  />
-                  <TableHeader
-                    label='Due Date'
-                    onSort={() => handleSort('dueDate')}
-                    className='md:min-w-[100px] xl:min-w-[160px]'
-                  />
-                  <TableHeader label='Member' sortable={false} className='md:w-[128px] md:min-w-[128px]' />
-                  <TableHeader
-                    label='Label'
-                    onSort={() => handleSort('label')}
-                    className='md:w-[128px] md:min-w-[128px]'
-                  />
-                  <TableHeader
-                    label='Status'
-                    onSort={() => handleSort('status')}
-                    className='md:w-[169px] md:min-w-[169px]'
-                  />
-                  <TableHeader label='' sortable={false} />
-                </tr>
-              </thead>
-              <tbody>
-                {displayData.map((history) => (
-                  <TableRow key={history.id} history={history} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          maxVisiblePages={3}
-        />
+        <TableControls onSearch={handleSearch} onSort={handleSort} />
+
+        {allData.length === 0 ? (
+          <TableEmpty />
+        ) : (
+          <>
+            <div className='w-full overflow-hidden rounded-xl border border-soft-100 bg-white'>
+              <div className='max-w-full md:overflow-x-scroll'>
+                <table className='w-full border-collapse overflow-hidden rounded-xl border border-white'>
+                  <thead className='max-md:hidden'>
+                    <tr>
+                      <TableHeader
+                        label='Task Name'
+                        onSort={() => handleSort('name')}
+                        className='md:min-w-[280px] xl:min-w-[300px]'
+                      />
+                      <TableHeader
+                        label='Due Date'
+                        onSort={() => handleSort('dueDate')}
+                        className='md:min-w-[100px] xl:min-w-[160px]'
+                      />
+                      <TableHeader label='Member' sortable={false} className='md:w-[128px] md:min-w-[128px]' />
+                      <TableHeader
+                        label='Label'
+                        onSort={() => handleSort('label')}
+                        className='md:w-[128px] md:min-w-[128px]'
+                      />
+                      <TableHeader
+                        label='Status'
+                        onSort={() => handleSort('status')}
+                        className='md:w-[169px] md:min-w-[169px]'
+                      />
+                      <TableHeader label='' sortable={false} />
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {displayData.map((history) => (
+                      <TableRow key={history.id} history={history} />
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            {totalPages > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                maxVisiblePages={3}
+              />
+            )}
+          </>
+        )}
       </div>
     </DashboardLayout>
   )
