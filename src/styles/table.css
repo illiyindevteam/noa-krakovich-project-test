@@ -1,20 +1,45 @@
 @reference './index.css';
 
 @layer base {
-  td{
-    @apply px-3 max-md:py-1 max-md:grid max-md:grid-cols-[98px_1fr] md:h-[54px] md:border md:border-soft-100 text-sm text-strong-950 
+  tbody>tr {
+    @apply max-md:grid grid-cols-1 sm:grid-cols-4
   }
-  td:before{
+
+  td:first-child, td:last-child{
+    @apply col-span-1 sm:col-span-4
+  }
+  td:nth-child(2) {
+    @apply border-r border-soft-100
+  }
+  td:nth-child(3) {
+    @apply border-r border-soft-100
+  }
+  td:nth-child(4) {
+    @apply border-r border-soft-100
+  }
+  
+
+  td {
+    @apply px-3 max-md:my-1 max-md:grid max-md:grid-cols-[98px_1fr] md:h-[54px] md:border md:border-soft-100 text-sm text-strong-950
+  }
+
+  td:not(:first-child):not(:last-child){
+    @apply max-md:flex max-md:flex-col gap-1 max-sm:grid max-sm:grid-cols-[98px_1fr]
+  }
+
+  td:not(:last-child)::before {
     @apply max-md:content-[attr(data-cell)_":_"] font-medium
   }
-  td:first-child{
+
+  td:first-child {
     @apply max-md:pt-4
   }
-  td:last-child{
+
+  td:last-child {
     @apply max-md:pb-4
   }
+
   tr:nth-of-type(2n) {
     @apply bg-[#F8F8F8] md:bg-white
-    
   }
 }

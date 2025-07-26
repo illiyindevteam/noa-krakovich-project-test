@@ -1,8 +1,10 @@
 import CheckIcon from '@/assets/icon/check.svg?react'
 import Badge from '@/components/ui/Badge'
+import Button from '@/components/ui/Button'
 import MemberGroup from '@/components/ui/MemberGroup'
 import type { HistoryItem } from '@/types/history.type'
 import { memo } from 'react'
+import Download from '@/assets/icon/download.svg?react'
 
 interface TableRowProps {
   history: HistoryItem
@@ -27,6 +29,9 @@ const TableRow = ({ history }: TableRowProps) => (
     <td data-cell='Due Date'>
       <p className='text-sm text-nowrap text-sub-600'>{history.dueDate}</p>
     </td>
+    <td data-cell='Member'>
+      <MemberGroup members={history.members} className='h-6 -space-x-[4px] [&>img]:h-6 [&>img]:w-6' />
+    </td>
     <td data-cell='Label'>
       <Badge
         name={history.label.text}
@@ -41,10 +46,15 @@ const TableRow = ({ history }: TableRowProps) => (
         style={{ backgroundColor: history.status.bgColor, color: history.status.textColor }}
       />
     </td>
-    <td data-cell='Member'>
-      <MemberGroup members={history.members} className='h-6 -space-x-[4px] [&>img]:h-6 [&>img]:w-6' />
+    <td data-cell='Action'>
+      <Button
+        variant='neutral-stroke'
+        size='xs'
+        text='Download'
+        rightIcon={<Download width='100%' height='100%' />}
+        className='w-full sm:w-fit'
+      />
     </td>
-    <td data-cell='Action'></td>
   </tr>
 )
 

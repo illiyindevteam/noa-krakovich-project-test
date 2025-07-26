@@ -9,7 +9,7 @@ interface BadgeProps extends HtmlHTMLAttributes<HTMLDivElement> {
 
 const Badge = ({ name, withDot, className, ...props }: BadgeProps) => {
   return (
-    <div className={cn('w-fit rounded-sm px-2 py-[2px] text-xs font-medium', className)} {...props}>
+    <div className={cn('h-fit w-fit rounded-sm px-2 py-[2px] text-xs font-medium', className)} {...props}>
       <p className='text-nowrap'>
         {withDot && <span className='mr-[6px]'>•</span>}
         {name}

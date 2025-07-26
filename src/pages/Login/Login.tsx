@@ -1,11 +1,14 @@
 import previewImage from '@/assets/images/login-preview-img.webp'
 import logoImage from '@/assets/images/logo-brand-small.webp'
+import LogoGoogle from '@/assets/icon/logo-google.svg?react'
 import Button from '@/components/ui/Button'
 import Checkbox from '@/components/ui/Checkbox'
 import FormField from '@/components/ui/FormField'
 import InputText from '@/components/ui/InputText'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+  const navigate = useNavigate()
   return (
     <section className='mx-auto grid w-full max-w-[1440px] grid-cols-1 px-4 py-12 md:p-8 lg:h-225 lg:grid-cols-2'>
       <div className='hidden h-full w-full p-3 lg:block'>
@@ -37,13 +40,25 @@ const Login = () => {
               <Checkbox label='Remember me' />
             </div>
             <div className='flex flex-col items-center gap-4 xs:gap-6'>
-              <Button text='Login' />
+              <Button
+                text='Log in'
+                variant='primary-filled'
+                size='lg'
+                className='w-full justify-center'
+                onClick={() => navigate('/dashboard')}
+              />
               <div className='flex w-full max-w-60 items-center justify-center gap-4'>
                 <hr className='w-full border-soft-100' />
                 <span className='text-md text-sub-600'>or</span>
                 <hr className='w-full border-soft-100' />
               </div>
-              <Button text='Google' />
+              <Button
+                text='Continue with Google'
+                leftIcon={<LogoGoogle width='100%' height='100%' />}
+                variant='neutral-stroke'
+                size='lg'
+                className='w-full justify-center'
+              />
             </div>
           </form>
           <p className='text-xs text-surface-800 md:text-sm'>

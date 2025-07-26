@@ -94,9 +94,9 @@ const History = () => {
                 <tr>
                   <TableHeader label='Task Name' onSort={() => handleSort('name')} />
                   <TableHeader label='Due Date' onSort={() => handleSort('dueDate')} />
+                  <TableHeader label='Member' sortable={false} />
                   <TableHeader label='Label' onSort={() => handleSort('label')} />
                   <TableHeader label='Status' onSort={() => handleSort('status')} />
-                  <TableHeader label='Member' sortable={false} />
                   <TableHeader label='' sortable={false} />
                 </tr>
               </thead>

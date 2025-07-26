@@ -1,5 +1,8 @@
 import type { UpcomingMeetingType } from '@/types/dashboard.type'
 import MemberGroup from './ui/MemberGroup'
+import Button from './ui/Button'
+import ChevronRight from '@/assets/icon/chevron-right.svg?react'
+import Bell from '@/assets/icon/bell.svg?react'
 
 const CardMeetingSchedule = ({ date, time, title, description, members }: UpcomingMeetingType) => {
   return (
@@ -18,7 +21,16 @@ const CardMeetingSchedule = ({ date, time, title, description, members }: Upcomi
       </div>
       <div className='flex w-full justify-between'>
         <MemberGroup members={members} />
-        {/* <Button /> */}
+        {date === 'Today' ? (
+          <Button
+            text='Join Now'
+            variant='primary-filled'
+            size='sm'
+            rightIcon={<ChevronRight width='100%' height='100%' />}
+          />
+        ) : (
+          <Button text='Alert Me' variant='neutral-stroke' size='sm' rightIcon={<Bell width='100%' height='100%' />} />
+        )}
       </div>
     </div>
   )
